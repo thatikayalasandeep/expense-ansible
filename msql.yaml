@@ -1,0 +1,33 @@
+- name: configure mysql server
+  hosts: mysql
+  become: yes
+
+  vars:
+    mysql_root_password: "Expense@1"
+
+  tasks:
+  - name: install MySQL server
+    ansible.builtin.package:
+      name: mysql-server
+      state: installed
+  
+  - name: start and enable MySQL server
+    ansible.built.service:
+      name: mysqld
+      state: started
+      enabled: yes
+
+  # - name: connect to sql server
+  #   configure.mysql.mysql_info:
+  #     login_user: root
+  #     login_password: "{{ mysql_root_password }}"
+  #     login_host: 
+  #   register: mysql_info
+  #   ignore_errors: true
+
+  # - name: Print the connection info
+  #   ansible.builtin.debug:
+  #     msg: "{{ mysql_info }}"
+
+
+  
