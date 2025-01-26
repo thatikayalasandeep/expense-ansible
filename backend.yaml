@@ -1,0 +1,8 @@
+- name: configure backend
+  hosts: backend
+
+  tasks:
+  - name: Print hello world
+    ansible.builtin.debug:
+    msg: "Hello world"
+
